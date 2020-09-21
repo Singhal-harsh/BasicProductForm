@@ -1,0 +1,29 @@
+<h2>Edit the form accordingly!</h2>
+<!-- {{prod.name}}
+{{prod | json}} -->
+
+<form #productForm="ngForm" (ngSubmit)="onSubmit(productForm.value)" novalidate>
+    <div class = "container">
+        <div class="form-group">
+            
+            <input type="text" name="name" required class="form-control"  [(ngModel)]="prod.name" #nameModelRef="ngModel" ngModel>
+            <div [hidden]="nameModelRef.valid || nameModelRef.pristine" class="alert alert-danger">
+                Please enter Name of the Product!
+            </div>
+        </div>    
+        <div class="form-group">
+            <input type="number" name="quantity" required class="form-control" [(ngModel)]="prod.quantity" #quantityModelRef="ngModel" ngModel>
+            <div [hidden]="quantityModelRef.valid || quantityModelRef.pristine" class="alert alert-danger">
+                Please enter Quantity of the product!
+            </div>
+        </div>
+        <div class="form-group">
+            <input type="number" step = '0.01' name="price" required class="form-control" [(ngModel)]="prod.price" #priceModelRef="ngModel" ngModel>
+            <div [hidden]="priceModelRef.valid || priceModelRef.pristine" class="alert alert-danger">
+                Please enter Price of the product!
+            </div>
+        </div>
+        <button type="submit" [disabled]="!productForm.form.valid">EDIT PRODUCT</button>&nbsp;&nbsp;&nbsp;<button type="button" [disabled]="!productForm.form.valid" (click)="onCancellation()">CANCEL</button>
+
+    </div>
+</form>
